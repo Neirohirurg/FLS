@@ -5,62 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FLS"
         mc:Ignorable="d"
-        Title="FLS" Height="450" Width="800" Icon="/logo.png" WindowState="Maximized" Foreground="#FFF3F3F3" MinWidth="800" MinHeight="450" BorderBrush="#FFF3F3F3">
-    <Window.Resources>
-        <Style x:Key="RoundButtonStyle" TargetType="Button">
+        Title="FLS" Icon="Images/logo.png" WindowState="Maximized" Foreground="#FFF3F3F3" MinWidth="800" MinHeight="450" Loaded="mainWindow_Loaded" Padding="5">
 
-            <Setter Property="Background" Value="#ffffff"/>
-            <Setter Property="Foreground" Value="#000000"/>
-            <Setter Property="Padding" Value="10"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Margin" Value="8"/>
-            <Setter Property="BorderBrush" Value="#000000"/>
-            <Setter Property="BorderThickness" Value="1"/>
-
-
-            <Setter Property="Height" Value="41"/>
-            <Setter Property="Width" Value="153"/>
-
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="15">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="BorderThickness" Value="2"/>
-                    <Setter Property="BorderBrush" Value="#2980B9"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="menuLabel" TargetType="Label">
-            <Setter Property="Margin" Value="25, 0, 25, 0"></Setter>
-            <Setter Property="FontSize" Value="16"></Setter>
-            <Setter Property="FontWeight" Value="Bold"></Setter>
-            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="TextBlock.TextDecorations" Value="OverLine"/>
-
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Foreground" Value="#3498DB"/>
-                    <Setter Property="TextBlock.TextDecorations" Value="Underline"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-
-    </Window.Resources>
+    <Window.DataContext>
+        <local:MainViewModel />
+    </Window.DataContext>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -69,14 +18,14 @@
         </Grid.RowDefinitions>
 
         <!-- Боковая навигационная панель-->
-        <StackPanel HorizontalAlignment="Left" Width="248" Background="White" Margin="0,0,0,68" Grid.RowSpan="2">
-            <StackPanel Orientation="Horizontal" Width="238">
-                <Image Source="logo.png" Height="41" Width="46"></Image>
+        <StackPanel HorizontalAlignment="Left" Width="248" Background="White" Margin="0,0,0,32" Grid.RowSpan="2" VerticalAlignment="Top" Height="401">
+            <StackPanel Orientation="Horizontal" Width="239">
+                <Image Source="Images\logo.png" Height="41" Width="46"></Image>
                 <Label Content="Factory Logistic System" FontSize="17" FontWeight="Bold"  VerticalContentAlignment="Center" Width="196" Foreground="#FF3498DB" Height="62"/>
             </StackPanel>
-            <Border BorderBrush="#000000" BorderThickness="0,0,1,0" HorizontalAlignment="Left" Width="170" Margin="10,10,0,0" Height="246">
-                <StackPanel x:Name="stackPanel1" HorizontalAlignment="Center"  Width="171" Margin="0,10,0,2">
-                    <Button x:Name="button4" Content="Заявки" Style="{StaticResource RoundButtonStyle}"/>
+            <Border BorderBrush="#000000" BorderThickness="0,0,1,0" HorizontalAlignment="Left" Width="171" Margin="10,57,0,0" Height="233">
+                <StackPanel x:Name="stackPanel1" HorizontalAlignment="Center"  Width="171" Margin="0,10,0,2" VerticalAlignment="Bottom">
+                    <Button x:Name="button4" Content="Заявки" Style="{StaticResource RoundButtonStyle}" Click="button4_Click"/>
                     <Button x:Name="button2" Content="Маршруты" Style="{StaticResource RoundButtonStyle}" Click="button2_Click"/>
                     <Button x:Name="button1" Content="Поставки" Style="{StaticResource RoundButtonStyle}" Click="button1_Click"/>
                     <Button x:Name="button3" Content="История" Style="{StaticResource RoundButtonStyle}" Click="button3_Click"/>
@@ -86,18 +35,41 @@
 
         <!-- Указывает текущее время-->
         <Border BorderBrush="#000000" Grid.Row="1" BorderThickness="0,1,0,0" Margin="10,110,10,0" VerticalAlignment="Bottom">
-            <Label Content="DateTime"  VerticalContentAlignment="Bottom" VerticalAlignment="Center" HorizontalAlignment="Left" Width="780" />
+            <Label x:Name="dateLabel" Content="DateTime"  VerticalContentAlignment="Bottom" VerticalAlignment="Center" HorizontalAlignment="Left" Width="780" />
         </Border>
 
         <!-- Верхняя навигационная панель-->
-        <Border x:Name="navBar1" BorderBrush="#000000" BorderThickness="0,0,0,1" Margin="0,0,10,236" HorizontalAlignment="Right" Width="421" >
-            <StackPanel Orientation="Horizontal" Height="61" VerticalAlignment="Center">
-                <Label x:Name="inputLabel" Content="Входящие" Style="{StaticResource menuLabel}" MouseDown="inputLabel_MouseDown"></Label>
-                <Label x:Name="activeLabel" Content="Активные" Style="{StaticResource menuLabel}" MouseDown="activeLabel_MouseDown"></Label>
-                <Label x:Name="endLabel" Content="Завершенные" Style="{StaticResource menuLabel}" MouseDown="endLabel_MouseDown"></Label>
+        <Border x:Name="navBar1" Style="{StaticResource navBar}" Margin="0,0,10,236" Width="326" >
+            <StackPanel x:Name="stack1" Orientation="Horizontal" Height="61" VerticalAlignment="Center" HorizontalAlignment="Center" Width="311">
+                <Label x:Name="activeLabel" Content="Входящие" Style="{StaticResource menuLabel}" MouseDown="activeLabel_MouseDown"></Label>
+                <Label x:Name="endLabel" Content="Завершенные" Style="{StaticResource menuLabel}" MouseDown="endLabel_MouseDown"/>
             </StackPanel>
         </Border>
 
-        <Frame x:Name="mainFrame" Margin="253,66,10,32" Grid.RowSpan="2" Initialized="mainFrame_Initialized" NavigationUIVisibility="Hidden"></Frame>
+        <Border x:Name="navBar2" Style="{StaticResource navBar}" Visibility="Collapsed" >
+            <StackPanel x:Name="stack2" Orientation="Horizontal" Height="61" VerticalAlignment="Center">
+                <Label x:Name="newRoute" Content="Добавить" Style="{StaticResource menuLabel}" ></Label>
+                <Label x:Name="delRoute" Content="Удалить" Style="{StaticResource menuLabel}" ></Label>
+                <Label x:Name="endRoute" Content="Завершенные" Style="{StaticResource menuLabel}"/>
+            </StackPanel>
+        </Border>
+
+        <Border x:Name="navBar3" Style="{StaticResource navBar}" Visibility="Collapsed" >
+            <StackPanel x:Name="stack3" Orientation="Horizontal" Height="61" VerticalAlignment="Center">
+                <Label x:Name="newPost" Content="Добавить" Style="{StaticResource menuLabel}" ></Label>
+                <Label x:Name="activePost" Content="Активные" Style="{StaticResource menuLabel}" ></Label>
+                <Label x:Name="endPost" Content="Завершенные" Style="{StaticResource menuLabel}" />
+            </StackPanel>
+        </Border>
+
+        <Border x:Name="navBar4" Style="{StaticResource navBar}" Visibility="Collapsed" >
+            <StackPanel  x:Name="stack4" Orientation="Horizontal" Height="61" VerticalAlignment="Center">
+                <Label x:Name="stateLabel" Content="Заявки" Style="{StaticResource menuLabel}" ></Label>
+                <Label x:Name="routeLabel" Content="Маршруты" Style="{StaticResource menuLabel}" ></Label>
+                <Label x:Name="postLabel" Content="Поставки" Style="{StaticResource menuLabel}" />
+            </StackPanel>
+        </Border>
+
+        <Frame x:Name="mainFrame" Margin="193,67,10,32" Grid.RowSpan="2" Initialized="mainFrame_Initialized" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>
