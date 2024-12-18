@@ -68,7 +68,27 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\mainPage.xaml">
+    <Page Include="Pages\HistoryPages\historyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PostPages\postPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RoutePages\addRoutePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RoutePages\routePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\StatePages\endPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\StatePages\statePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -77,8 +97,23 @@
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Route.cs" />
     <Compile Include="Models\State.cs" />
-    <Compile Include="Pages\mainPage.xaml.cs">
-      <DependentUpon>mainPage.xaml</DependentUpon>
+    <Compile Include="Pages\HistoryPages\historyPage.xaml.cs">
+      <DependentUpon>historyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PostPages\postPage.xaml.cs">
+      <DependentUpon>postPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RoutePages\addRoutePage.xaml.cs">
+      <DependentUpon>addRoutePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RoutePages\routePage.xaml.cs">
+      <DependentUpon>routePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StatePages\endPage.xaml.cs">
+      <DependentUpon>endPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StatePages\statePage.xaml.cs">
+      <DependentUpon>statePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -108,11 +143,6 @@
   <ItemGroup>
     <Resource Include="Images\logo.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\HistoryPages\" />
-    <Folder Include="Pages\PostPages\" />
-    <Folder Include="Pages\RoutePages\" />
-    <Folder Include="Pages\StatePages\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

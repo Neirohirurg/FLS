@@ -6,15 +6,17 @@ namespace FLS.Models
     {
         public int Id { get; set; }
         public string RouteName { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
+        public string From { get; set; }
+        public double AvgDuration { get; set; }
+        public double MaxWeight { get; set; }
 
-        public Route(int id, string routeName, DateTime startDate, DateTime? endDate = null)
+        public Route(int id, string routeName, string from, double avgDuration, double maxWeight)
         {
             Id = id;
             RouteName = routeName;
-            StartDate = startDate;
-            EndDate = endDate;
+            From = from;
+            AvgDuration = avgDuration;
+            MaxWeight = maxWeight;          
         }
     }
 }

@@ -1,0 +1,35 @@
+﻿<Page x:Class="FLS.Pages.RoutePages.addRoutePage"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FLS"
+      mc:Ignorable="d" Background="White">
+
+    <Page.DataContext>
+        <local:MainViewModel/>
+    </Page.DataContext>
+
+    <Grid Margin="20">
+
+        <!-- Форма для добавления нового маршрута -->
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+            <Label Content="Название маршрута:" Style="{StaticResource labelForm}"/>
+            <TextBox Name="RouteNameTextBox" Style="{StaticResource textBoxForm}"/>
+            
+            <Label Content="Откуда:" Style="{StaticResource labelForm}"></Label>
+            <TextBox Name="FromTextBox" Style="{StaticResource textBoxForm}" />
+            
+            <Label Content="Продолжительность:" Style="{StaticResource labelForm}"></Label>
+            <TextBox Name="AvgDurationTextBox" Style="{StaticResource textBoxForm}"/>
+            
+            <Label Content="Максимальный вес:" Style="{StaticResource labelForm}"></Label>
+            <TextBox Name="MaxWeightTextBox" Style="{StaticResource textBoxForm}"/>
+
+            <!-- Кнопка для добавления маршрута -->
+            <Button Content="Добавить" Style="{StaticResource RoundButtonStyle}" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom" Click="Button_Click"/>
+            <Button Content="Отмена" Style="{StaticResource RoundButtonStyle}" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom" Click="Button_Click_1"/>
+        
+        </StackPanel>
+    </Grid>
+</Page>

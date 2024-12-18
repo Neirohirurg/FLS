@@ -48,9 +48,8 @@
 
         <Border x:Name="navBar2" Style="{StaticResource navBar}" Visibility="Collapsed" >
             <StackPanel x:Name="stack2" Orientation="Horizontal" Height="61" VerticalAlignment="Center">
-                <Label x:Name="newRoute" Content="Добавить" Style="{StaticResource menuLabel}" ></Label>
-                <Label x:Name="delRoute" Content="Удалить" Style="{StaticResource menuLabel}" ></Label>
-                <Label x:Name="endRoute" Content="Завершенные" Style="{StaticResource menuLabel}"/>
+                <Label x:Name="newRoute" Content="Добавить" Style="{StaticResource menuLabel}" MouseDown="newRoute_MouseDown" ></Label>
+                <Label x:Name="delRoute" Content="Удалить" Style="{StaticResource menuLabel}" MouseDown="delRoute_MouseDown" ></Label>
             </StackPanel>
         </Border>
 
