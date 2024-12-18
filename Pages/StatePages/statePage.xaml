@@ -8,7 +8,7 @@
           Title="mainPage">
 
     <Page.DataContext>
-        <local:MainViewModel/>
+        <StaticResource ResourceKey="MainViewModel"/>
     </Page.DataContext>
 
     <!-- Основной контейнер на странице -->

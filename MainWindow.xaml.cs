@@ -18,6 +18,7 @@ namespace FLS
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainViewModel viewModel = (MainViewModel)Application.Current.Resources["MainViewModel"];
         public MainWindow()
         {
             InitializeComponent();
@@ -152,7 +153,6 @@ namespace FLS
         {
 
             var routePage = (routePage)mainFrame.Content;
-            var viewModel1 = (MainViewModel)routePage.DataContext;
             var selectedRoute = routePage.ChosenRoute;
 
             if (routePage != null && selectedRoute != null)
@@ -160,7 +160,7 @@ namespace FLS
                 MessageBoxResult result = MessageBox.Show("Вы уверены?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
-                    viewModel1.DeleteRoute(selectedRoute);                
+                    viewModel.DeleteRoute(selectedRoute);                
                     MessageBox.Show("Маршрут удален");
                 }
                 else

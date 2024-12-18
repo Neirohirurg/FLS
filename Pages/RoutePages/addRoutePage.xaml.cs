@@ -29,7 +29,7 @@ namespace FLS.Pages.RoutePages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var modelView1 = (MainViewModel)this.DataContext;
+            MainViewModel viewModel = (MainViewModel)Application.Current.Resources["MainViewModel"];
 
             string routeName = RouteNameTextBox.Text;
             string from = FromTextBox.Text;
@@ -37,22 +37,20 @@ namespace FLS.Pages.RoutePages
             string maxWeightText = MaxWeightTextBox.Text;
 
             // Доделать!!!
-            if ()
-            {
-                var newRoute = new Route(modelView1.Routes.Count() + 1, routeName, from, Convert.ToDouble(avgDurationText), Convert.ToDouble(maxWeightText));
+            
+            
+                var newRoute = new Route(viewModel.Routes.Count() + 1, routeName, from, Convert.ToDouble(avgDurationText), Convert.ToDouble(maxWeightText));
 
-                modelView1.AddRoute(newRoute);
+                viewModel.AddRoute(newRoute);
                 MessageBox.Show("Маршрут добавлен!");
 
                 RouteNameTextBox.Clear();
                 FromTextBox.Clear();
                 AvgDurationTextBox.Clear();
                 MaxWeightTextBox.Clear();
-            }
-            else
-            {
-                MessageBox.Show("Введите корректные данные для продолжительности и веса", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            
+               // MessageBox.Show("Введите корректные данные для продолжительности и веса", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
